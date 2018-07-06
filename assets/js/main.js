@@ -1,249 +1,401 @@
 /*
-	Helios by HTML5 UP
+	Dimension by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 (function($) {
 
-	var settings = {
+	var	$window = $(window),
+		$body = $('body'),
+		$wrapper = $('#wrapper'),
+		$header = $('#header'),
+		$footer = $('#footer'),
+		$main = $('#main'),
+		$main_articles = $main.children('article');
 
-		// Carousels
-			carousels: {
-				speed: 4,
-				fadeIn: true,
-				fadeDelay: 250
-			},
+	// Breakpoints.
+		breakpoints({
+			xlarge:   [ '1281px',  '1680px' ],
+			large:    [ '981px',   '1280px' ],
+			medium:   [ '737px',   '980px'  ],
+			small:    [ '481px',   '736px'  ],
+			xsmall:   [ '361px',   '480px'  ],
+			xxsmall:  [ null,      '360px'  ]
+		});
 
-	};
+	// Play initial animations on page load.
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-preload');
+			}, 100);
+		});
 
-	skel.breakpoints({
-		wide: '(max-width: 1680px)',
-		normal: '(max-width: 1280px)',
-		narrow: '(max-width: 960px)',
-		narrower: '(max-width: 840px)',
-		mobile: '(max-width: 736px)'
-	});
+	// Fix: Flexbox min-height bug on IE.
+		if (browser.name == 'ie') {
 
-	$(function() {
+			var flexboxFixTimeoutId;
 
-		var	$window = $(window),
-			$body = $('body');
+			$window.on('resize.flexbox-fix', function() {
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+				clearTimeout(flexboxFixTimeoutId);
 
-			$window.on('load', function() {
-				$body.removeClass('is-loading');
-			});
+				flexboxFixTimeoutId = setTimeout(function() {
 
-		// CSS polyfills (IE<9).
-			if (skel.vars.IEVersion < 9)
-				$(':last-child').addClass('last-child');
+					if ($wrapper.prop('scrollHeight') > $window.height())
+						$wrapper.css('height', 'auto');
+					else
+						$wrapper.css('height', '100vh');
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+				}, 250);
 
-		// Prioritize "important" elements on mobile.
-			skel.on('+mobile -mobile', function() {
-				$.prioritize(
-					'.important\\28 mobile\\29',
-					skel.breakpoint('mobile').active
-				);
-			});
+			}).triggerHandler('resize.flexbox-fix');
 
-		// Dropdowns.
-			$('#nav > ul').dropotron({
-				mode: 'fade',
-				speed: 350,
-				noOpenerFade: true,
-				alignment: 'center'
-			});
+		}
 
-		// Scrolly links.
-			$('.scrolly').scrolly();
+	// Nav.
+		var $nav = $header.children('nav'),
+			$nav_li = $nav.find('li');
 
-		// Off-Canvas Navigation.
+		// Add "middle" alignment classes if we're dealing with an even number of items.
+			if ($nav_li.length % 2 == 0) {
 
-			// Navigation Button.
-				$(
-					'<div id="navButton">' +
-						'<a href="#navPanel" class="toggle"></a>' +
-					'</div>'
-				)
-					.appendTo($body);
+				$nav.addClass('use-middle');
+				$nav_li.eq( ($nav_li.length / 2) ).addClass('is-middle');
 
-			// Navigation Panel.
-				$(
-					'<div id="navPanel">' +
-						'<nav>' +
-							$('#nav').navList() +
-						'</nav>' +
-					'</div>'
-				)
-					.appendTo($body)
-					.panel({
-						delay: 500,
-						hideOnClick: true,
-						hideOnSwipe: true,
-						resetScroll: true,
-						resetForms: true,
-						target: $body,
-						visibleClass: 'navPanel-visible'
-					});
+			}
 
-			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
-				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-					$('#navButton, #navPanel, #page-wrapper')
-						.css('transition', 'none');
+	// Main.
+		var	delay = 325,
+			locked = false;
 
-		// Carousels.
-			$('.carousel').each(function() {
+		// Methods.
+			$main._show = function(id, initial) {
 
-				var	$t = $(this),
-					$forward = $('<span class="forward"></span>'),
-					$backward = $('<span class="backward"></span>'),
-					$reel = $t.children('.reel'),
-					$items = $reel.children('article');
+				var $article = $main_articles.filter('#' + id);
 
-				var	pos = 0,
-					leftLimit,
-					rightLimit,
-					itemWidth,
-					reelWidth,
-					timerId;
+				// No such article? Bail.
+					if ($article.length == 0)
+						return;
 
-				// Items.
-					if (settings.carousels.fadeIn) {
+				// Handle lock.
 
-						$items.addClass('loading');
+					// Already locked? Speed through "show" steps w/o delays.
+						if (locked || (typeof initial != 'undefined' && initial === true)) {
 
-						$t.onVisible(function() {
-							var	timerId,
-								limit = $items.length - Math.ceil($window.width() / itemWidth);
+							// Mark as switching.
+								$body.addClass('is-switching');
 
-							timerId = window.setInterval(function() {
-								var x = $items.filter('.loading'), xf = x.first();
+							// Mark as visible.
+								$body.addClass('is-article-visible');
 
-								if (x.length <= limit) {
+							// Deactivate all articles (just in case one's already active).
+								$main_articles.removeClass('active');
 
-									window.clearInterval(timerId);
-									$items.removeClass('loading');
-									return;
+							// Hide header, footer.
+								$header.hide();
+								$footer.hide();
 
-								}
+							// Show main, article.
+								$main.show();
+								$article.show();
 
-								if (skel.vars.IEVersion < 10) {
+							// Activate article.
+								$article.addClass('active');
 
-									xf.fadeTo(750, 1.0);
-									window.setTimeout(function() {
-										xf.removeClass('loading');
-									}, 50);
+							// Unlock.
+								locked = false;
 
-								}
-								else
-									xf.removeClass('loading');
+							// Unmark as switching.
+								setTimeout(function() {
+									$body.removeClass('is-switching');
+								}, (initial ? 1000 : 0));
 
-							}, settings.carousels.fadeDelay);
-						}, 50);
+							return;
+
+						}
+
+					// Lock.
+						locked = true;
+
+				// Article already visible? Just swap articles.
+					if ($body.hasClass('is-article-visible')) {
+
+						// Deactivate current article.
+							var $currentArticle = $main_articles.filter('.active');
+
+							$currentArticle.removeClass('active');
+
+						// Show article.
+							setTimeout(function() {
+
+								// Hide current article.
+									$currentArticle.hide();
+
+								// Show article.
+									$article.show();
+
+								// Activate article.
+									setTimeout(function() {
+
+										$article.addClass('active');
+
+										// Window stuff.
+											$window
+												.scrollTop(0)
+												.triggerHandler('resize.flexbox-fix');
+
+										// Unlock.
+											setTimeout(function() {
+												locked = false;
+											}, delay);
+
+									}, 25);
+
+							}, delay);
+
 					}
 
-				// Main.
-					$t._update = function() {
-						pos = 0;
-						rightLimit = (-1 * reelWidth) + $window.width();
-						leftLimit = 0;
-						$t._updatePos();
-					};
+				// Otherwise, handle as normal.
+					else {
 
-					if (skel.vars.IEVersion < 9)
-						$t._updatePos = function() { $reel.css('left', pos); };
-					else
-						$t._updatePos = function() { $reel.css('transform', 'translate(' + pos + 'px, 0)'); };
+						// Mark as visible.
+							$body
+								.addClass('is-article-visible');
 
-				// Forward.
-					$forward
-						.appendTo($t)
-						.hide()
-						.mouseenter(function(e) {
-							timerId = window.setInterval(function() {
-								pos -= settings.carousels.speed;
+						// Show article.
+							setTimeout(function() {
 
-								if (pos <= rightLimit)
-								{
-									window.clearInterval(timerId);
-									pos = rightLimit;
-								}
+								// Hide header, footer.
+									$header.hide();
+									$footer.hide();
 
-								$t._updatePos();
-							}, 10);
-						})
-						.mouseleave(function(e) {
-							window.clearInterval(timerId);
+								// Show main, article.
+									$main.show();
+									$article.show();
+
+								// Activate article.
+									setTimeout(function() {
+
+										$article.addClass('active');
+
+										// Window stuff.
+											$window
+												.scrollTop(0)
+												.triggerHandler('resize.flexbox-fix');
+
+										// Unlock.
+											setTimeout(function() {
+												locked = false;
+											}, delay);
+
+									}, 25);
+
+							}, delay);
+
+					}
+
+			};
+
+			$main._hide = function(addState) {
+
+				var $article = $main_articles.filter('.active');
+
+				// Article not visible? Bail.
+					if (!$body.hasClass('is-article-visible'))
+						return;
+
+				// Add state?
+					if (typeof addState != 'undefined'
+					&&	addState === true)
+						history.pushState(null, null, '#');
+
+				// Handle lock.
+
+					// Already locked? Speed through "hide" steps w/o delays.
+						if (locked) {
+
+							// Mark as switching.
+								$body.addClass('is-switching');
+
+							// Deactivate article.
+								$article.removeClass('active');
+
+							// Hide article, main.
+								$article.hide();
+								$main.hide();
+
+							// Show footer, header.
+								$footer.show();
+								$header.show();
+
+							// Unmark as visible.
+								$body.removeClass('is-article-visible');
+
+							// Unlock.
+								locked = false;
+
+							// Unmark as switching.
+								$body.removeClass('is-switching');
+
+							// Window stuff.
+								$window
+									.scrollTop(0)
+									.triggerHandler('resize.flexbox-fix');
+
+							return;
+
+						}
+
+					// Lock.
+						locked = true;
+
+				// Deactivate article.
+					$article.removeClass('active');
+
+				// Hide article.
+					setTimeout(function() {
+
+						// Hide article, main.
+							$article.hide();
+							$main.hide();
+
+						// Show footer, header.
+							$footer.show();
+							$header.show();
+
+						// Unmark as visible.
+							setTimeout(function() {
+
+								$body.removeClass('is-article-visible');
+
+								// Window stuff.
+									$window
+										.scrollTop(0)
+										.triggerHandler('resize.flexbox-fix');
+
+								// Unlock.
+									setTimeout(function() {
+										locked = false;
+									}, delay);
+
+							}, 25);
+
+					}, delay);
+
+
+			};
+
+		// Articles.
+			$main_articles.each(function() {
+
+				var $this = $(this);
+
+				// Close.
+					$('<div class="close">Close</div>')
+						.appendTo($this)
+						.on('click', function() {
+							location.hash = '';
 						});
 
-				// Backward.
-					$backward
-						.appendTo($t)
-						.hide()
-						.mouseenter(function(e) {
-							timerId = window.setInterval(function() {
-								pos += settings.carousels.speed;
-
-								if (pos >= leftLimit) {
-
-									window.clearInterval(timerId);
-									pos = leftLimit;
-
-								}
-
-								$t._updatePos();
-							}, 10);
-						})
-						.mouseleave(function(e) {
-							window.clearInterval(timerId);
-						});
-
-				// Init.
-					$window.load(function() {
-
-						reelWidth = $reel[0].scrollWidth;
-
-						skel.on('change', function() {
-
-							if (skel.vars.touch) {
-
-								$reel
-									.css('overflow-y', 'hidden')
-									.css('overflow-x', 'scroll')
-									.scrollLeft(0);
-								$forward.hide();
-								$backward.hide();
-
-							}
-							else {
-
-								$reel
-									.css('overflow', 'visible')
-									.scrollLeft(0);
-								$forward.show();
-								$backward.show();
-
-							}
-
-							$t._update();
-
-						});
-
-						$window.resize(function() {
-							reelWidth = $reel[0].scrollWidth;
-							$t._update();
-						}).trigger('resize');
-
+				// Prevent clicks from inside article from bubbling.
+					$this.on('click', function(event) {
+						event.stopPropagation();
 					});
 
 			});
 
-	});
+		// Events.
+			$body.on('click', function(event) {
+
+				// Article visible? Hide.
+					if ($body.hasClass('is-article-visible'))
+						$main._hide(true);
+
+			});
+
+			$window.on('keyup', function(event) {
+
+				switch (event.keyCode) {
+
+					case 27:
+
+						// Article visible? Hide.
+							if ($body.hasClass('is-article-visible'))
+								$main._hide(true);
+
+						break;
+
+					default:
+						break;
+
+				}
+
+			});
+
+			$window.on('hashchange', function(event) {
+
+				// Empty hash?
+					if (location.hash == ''
+					||	location.hash == '#') {
+
+						// Prevent default.
+							event.preventDefault();
+							event.stopPropagation();
+
+						// Hide.
+							$main._hide();
+
+					}
+
+				// Otherwise, check for a matching article.
+					else if ($main_articles.filter(location.hash).length > 0) {
+
+						// Prevent default.
+							event.preventDefault();
+							event.stopPropagation();
+
+						// Show article.
+							$main._show(location.hash.substr(1));
+
+					}
+
+			});
+
+		// Scroll restoration.
+		// This prevents the page from scrolling back to the top on a hashchange.
+			if ('scrollRestoration' in history)
+				history.scrollRestoration = 'manual';
+			else {
+
+				var	oldScrollPos = 0,
+					scrollPos = 0,
+					$htmlbody = $('html,body');
+
+				$window
+					.on('scroll', function() {
+
+						oldScrollPos = scrollPos;
+						scrollPos = $htmlbody.scrollTop();
+
+					})
+					.on('hashchange', function() {
+						$window.scrollTop(oldScrollPos);
+					});
+
+			}
+
+		// Initialize.
+
+			// Hide main, articles.
+				$main.hide();
+				$main_articles.hide();
+
+			// Initial article.
+				if (location.hash != ''
+				&&	location.hash != '#')
+					$window.on('load', function() {
+						$main._show(location.hash.substr(1), true);
+					});
 
 })(jQuery);

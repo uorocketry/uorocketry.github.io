@@ -60,6 +60,22 @@ mark {
 	color: inherit;
 }
 
+.background-image {
+	height: 100%;
+	width: auto;
+	position: fixed;
+	-webkit-transition: opacity 1.2s ease-in;
+	-moz-transition: opacity 1.2s ease-in;
+	-o-transition: opacity 1.2s ease-in;
+	-ms-transition: opacity 1.2s ease-in;
+	transition: opacity 1.2s ease-in;
+}
+
+body.is-preload .background-image {
+	opacity: 0
+}
+
+
 input::-moz-focus-inner {
 	border: 0;
 	padding: 0;

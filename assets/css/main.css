@@ -62,7 +62,10 @@ mark {
 
 .background-image {
 	height: 100%;
-	width: auto;
+	width: 100%;
+	background: url(../../images/rocket-on-pad.jpg);
+	background-size: cover;
+	background-position: center center;
 	position: fixed;
 	-webkit-transition: opacity 1.2s ease-in;
 	-moz-transition: opacity 1.2s ease-in;

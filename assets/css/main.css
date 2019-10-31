@@ -772,21 +772,22 @@ input, select, textarea {
 
 /* Actions */
 
-	ul.actions {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		cursor: default;
-		list-style: none;
-		margin-left: -1rem;
-		padding-left: 0;
-	}
+ul.actions {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    cursor: default;
+    list-style: none;
+    margin-left: -1rem;
+    padding-left: 0;
+}
 
-		ul.actions li {
-			padding: 0 0 0 1rem;
-			vertical-align: middle;
-		}
+        ul.actions li {
+            padding: 0 0 0 1rem;
+            vertical-align: middle;
+        }
 
 		ul.actions.special {
 			-moz-justify-content: center;

@@ -996,6 +996,40 @@ ul.actions {
 				border-top: 0;
 			}
 
+/* Grid */
+
+	.grid-container {
+		-webkit-overflow-scrolling: touch;
+		overflow-x: auto;
+		display: grid;
+		grid-column-gap: 50px;
+
+	}
+
+	.col1 {
+		grid-column-start: 1;
+		grid-column-end: 2;
+	}
+
+	.col2 {
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
+
+	.col3 {
+		grid-column-start: 3;
+		grid-column-end: 4;
+	}
+
+	.vl {
+		border-left: 3px solid grey;
+		height: 35%;
+		position: absolute;
+		left: 50%;
+		margin-left: -3px;
+		top: 25%;
+	}
+
 /* Button */
 
 	input[type="submit"],

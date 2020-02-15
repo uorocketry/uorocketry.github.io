@@ -1003,7 +1003,7 @@ ul.actions {
 		overflow-x: auto;
 		display: grid;
 		grid-column-gap: 50px;
-
+		grid-row-gap: 20px;
 	}
 
 	.col1 {
@@ -1021,6 +1021,26 @@ ul.actions {
 		grid-column-end: 4;
 	}
 
+	.col21 {
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+
+	.col22 {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+	.col23 {
+		grid-column-start: 3;
+		grid-column-end: 4;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+	
 	.vl {
 		border-left: 3px solid grey;
 		height: 35%;

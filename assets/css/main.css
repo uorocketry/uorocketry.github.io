@@ -7,6 +7,10 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+nav {
+	padding-bottom: 50px !important;
+}
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -1043,7 +1047,7 @@ ul.actions {
 		grid-row-start: 3;
 		grid-row-end: 4;
 	}
-	
+
 	.vl {
 		border-left: 3px solid grey;
 		height: 35%;

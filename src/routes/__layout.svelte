@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import desertBg from "$lib/assets/img/desert-sunrise.webp";
-  import desertVid from "$lib/assets/background.mp4";
+  // import desertVid from "$lib/assets/background.mp4";
   import logo from "$lib/assets/icon.svg";
 
   import "@fortawesome/fontawesome-free/css/all.css";

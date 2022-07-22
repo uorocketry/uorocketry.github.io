@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  height: 100%;
+  margin: 0px auto;
+  padding: 0px auto;
+  overflow-x: hidden;
+}
+
+.prose-default {
+  @apply prose;
+  @apply lg:prose-2xl;
+  @apply max-w-none;
+}
+
+.bg {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 75% center;
+  z-index: -1;
+}
+
+.centered-heading {
+  @apply font-mono;
+  @apply uppercase;
+  @apply grid;
+  @apply justify-center;
+  @apply w-full;
+  @apply text-center;
+}
+
+.title-heading {
+  @apply font-light;
+  @apply underline;
+  @apply underline-offset-8;
+  @apply decoration-4;
+  @apply tracking-wide;
+  @apply centered-heading;
+}
+
+.prose-section {
+  @apply p-8;
+  @apply prose-xl;
+  @apply lg:prose-2xl;
+}
+
+.prose-card {
+  @apply prose-xl;
+  @apply lg:prose-2xl;
+}
+
+.team-card {
+  @apply card;
+  @apply w-full;
+  @apply bg-base-100;
+  @apply shadow-xl;
+}

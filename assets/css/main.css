@@ -720,7 +720,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 736px) {
 
-			.image.main {
+			.image.main, .image.sponsorlogos {
 				margin: 2rem 0;
 			}
 
@@ -728,7 +728,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 480px) {
 
-			.image.main {
+			.image.main, .image.sponsorlogos {
 				margin: 1.5rem 0;
 			}
 

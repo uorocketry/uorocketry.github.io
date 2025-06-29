@@ -638,6 +638,19 @@ input, select, textarea {
 			display: none;
 		}
 
+.sponsor_logo_headers {
+		border-radius: 4px;
+		border: 0;
+		position: relative;
+		display: block;
+		margin: 2.5rem 0;
+		width: 100%;
+		}
+			.sponsor_logo_headers img {
+				width: 100%;
+			}
+}
+
 /* Image */
 
 	.image {

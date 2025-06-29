@@ -707,20 +707,10 @@ input, select, textarea {
 			.image.main img {
 				width: 100%;
 			}
-		.image.sponsorlogos {
-			display: block;
-			margin: 2.5rem 0;
-			width: 100%;
-			opacity: 1;
-		}
-
-			.image.sponsorlogos img {
-				width: 100%;
-			}
 
 		@media screen and (max-width: 736px) {
 
-			.image.main, .image.sponsorlogos {
+			.image.main {
 				margin: 2rem 0;
 			}
 
@@ -728,7 +718,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 480px) {
 
-			.image.main, .image.sponsorlogos {
+			.image.main {
 				margin: 1.5rem 0;
 			}
 

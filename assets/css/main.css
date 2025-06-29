@@ -708,10 +708,6 @@ input, select, textarea {
 				width: 100%;
 			}
 
-			.image.main fullyopaque {
-				opacity: 1;
-			}
-
 		@media screen and (max-width: 736px) {
 
 			.image.main {

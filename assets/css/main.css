@@ -1011,6 +1011,12 @@ ul.actions {
  	transform: translate(-50%, -50%);
 }
 
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
 /* Grid */
 
 	.grid-container {

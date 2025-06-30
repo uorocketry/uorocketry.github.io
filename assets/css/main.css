@@ -1004,11 +1004,12 @@ ul.actions {
 				border-top: 0;
 			}
 /* Text over image */
-.centered {
+.textoverimage {
 	position: absolute;
 	top: 50%;
 	left: 50%;
  	transform: translate(-50%, -50%);
+	text-shadow: 1px 1px 2px #0009;
 }
 
 .container {

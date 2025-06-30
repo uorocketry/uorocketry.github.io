@@ -1003,6 +1003,13 @@ ul.actions {
 			table.alt tfoot {
 				border-top: 0;
 			}
+/* Text over image */
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+ 	transform: translate(-50%, -50%);
+}
 
 /* Grid */
 

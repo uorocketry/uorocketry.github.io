@@ -1697,7 +1697,6 @@ ul.actions {
 		}
 
 
-        /* Three image containers (use 25% for four, and 50% for two, etc) */
         .column2 {
             float: left;
             margin-top: 0rem;
@@ -1712,9 +1711,112 @@ ul.actions {
             padding: 5px;
         }
 
-        /* Clear floats after image containers */
         .row::after {
             content: "";
             clear: both;
             display: table;
         }
+
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: rgba(27, 31, 34, 0.95); 
+    border-bottom: solid 1px rgba(255, 255, 255, 0.3); 
+    z-index: 1000; 
+    box-sizing: border-box;
+
+    padding-bottom: 0 !important; 
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 4.5rem; 
+}
+
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+
+    border-bottom: none !important; 
+    color: #ffffff;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.nav-logo:hover {
+    background-color: transparent !important;
+}
+
+.logo-img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    padding-left: 0; 
+    border-left: solid 1px rgba(255, 255, 255, 0.3); 
+}
+
+.nav-menu li:first-child {
+    border-left: 0; 
+}
+
+.nav-menu a {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    border-bottom: none !important; 
+    padding: 0 1.25rem;
+    height: 4.5rem;
+    line-height: 4.5rem; 
+}
+
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+
+.nav-menu .btn-join {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px #ffffff; 
+    border-radius: 4px;
+    color: #ffffff !important;
+    font-weight: 600;
+    margin-left: 1.25rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding: 0 1.25rem;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-menu .btn-join:hover {
+    background-color: #ffffff;
+    color: #1b1f22 !important; 
+}

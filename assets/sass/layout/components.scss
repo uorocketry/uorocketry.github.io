@@ -1,0 +1,49 @@
+@use "lists";
+
+button {
+    appearance: none;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        filter: brightness(50%)
+    }
+}
+
+menu {
+    @include lists.horizontal-list;
+}
+
+address ul {
+    @include lists.horizontal-list;
+}
+
+img {
+    max-width: 100%;
+}
+
+.grid {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+    .grid-item {
+        max-width: 40vw;
+    }
+}
+
+body {
+    text-align: center;
+}
+
+footer {
+    margin-top: 3em;
+}
+
+p {
+    text-align: left;
+    margin-left: 1em;
+}

@@ -1,0 +1,12 @@
+@mixin interactable($background-color: white) {
+    transition: background-color 0.25s ease-in;
+    background-color: rgba($color: $background-color, $alpha: 0%);
+
+    &:hover {
+        background-color: rgba($color: $background-color, $alpha: 7.5%);
+    }
+
+    &:active {
+        background-color: rgba($color: $background-color, $alpha: 17.5%);
+    }
+}

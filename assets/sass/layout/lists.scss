@@ -1,0 +1,20 @@
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin horizontal-list {
+    @include reset-list;
+
+    margin: 1em auto;
+
+    li {
+        display: inline-block;
+        margin: auto 0.5em;
+    }
+}
+
+menu {
+    @include horizontal-list;
+}

@@ -1,0 +1,25 @@
+permalink: /:basename
+
+sass:
+  sass_dir: assets/sass
+  style: compressed
+
+collections:
+  projects:
+      output: true
+  subteams:
+      output: true
+      order:
+        - airframe.md
+        - propulsion.md
+        - avionics.md
+        - recovery.md
+        - beamforming.md
+        - finance.md
+
+exclude:
+  - package.json
+  - styleling.config.mjs
+  - pnpm-lock.yaml
+  - README.md
+  - LICENSE.md

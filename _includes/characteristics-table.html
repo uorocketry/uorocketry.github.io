@@ -1,0 +1,25 @@
+<!--TODO-->
+<table>
+    <caption>{{ include.title }}</caption>
+    <thead>
+        <tr>
+            {% for header in include.headers %}
+            <th></th>
+            {% endfor %}
+        </tr>
+        {% if include.img %}
+        <tr>
+            <th colspan="{{ include.headers | size }}"></th>
+        </tr>
+        {% endif %}
+    </thead>
+    <tbody>
+        {% for row in include.data %}
+        <tr>
+        {% for data in row %}
+            <td>{{ data }}</td>
+        {% endfor %} <!-- data in row -->
+        </tr>
+        {% endfor %} <!-- row in include.data-->
+    </tbody>
+</table>

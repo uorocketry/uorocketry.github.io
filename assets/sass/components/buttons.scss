@@ -1,0 +1,10 @@
+@use "base/animations";
+
+@mixin interactable($background-color: white) {
+    @include animations.background-fade-hover;
+    background-color: rgba($color: $background-color, $alpha: 0%);
+}
+
+button {
+    appearance: none;
+}

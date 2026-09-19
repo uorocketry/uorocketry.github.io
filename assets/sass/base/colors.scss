@@ -1,6 +1,6 @@
-$primary-color: #fff;
+$primary: #fff;
 
 body {
     background-color: #334;
-    color: #fff;
+    color: $primary;
 }

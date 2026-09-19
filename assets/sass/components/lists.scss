@@ -18,3 +18,7 @@
 menu {
     @include horizontal-list;
 }
+
+address ul {
+    @include horizontal-list;
+}

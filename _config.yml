@@ -23,3 +23,4 @@ exclude:
   - pnpm-lock.yaml
   - README.md
   - LICENSE.md
+  - .jj/

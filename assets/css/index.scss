@@ -1,3 +1,186 @@
 ---
 ---
 @use "main";
+@use "base/animations";
+@use "components/lists";
+@use "components/buttons";
+
+li > a.link--logo {
+    @include buttons.interactable;
+
+    display: inline-block;
+    text-align: center;
+    color: white;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: solid white 1px;
+    border-radius: 50%;
+
+    i {
+        line-height: 2.25rem;
+    }
+}
+
+body {
+    background-size: cover, cover;
+    margin: 0;
+    height: 100vh;
+    background-repeat: repeat, no-repeat;
+    background-image:
+        linear-gradient(rgba($color: black, $alpha: 0.2), rgba($color: black, $alpha: 0.2)),
+        url(/assets/Images/Projects/2020_OctSkiesCrew.jpg);
+}
+
+header > img {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
+@media (max-width: 1024px) {
+    header > img {
+        width: 8rem;
+        height: 8rem;
+        padding-bottom: 2rem;
+    }
+}
+
+
+
+hgroup {
+    width: 60%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+    background: linear-gradient(white, white) center top / 0 1px no-repeat,
+        linear-gradient(white, white) center bottom / 0 1px no-repeat;
+    animation: expand-horizontal 0.8s ease-out forwards;
+
+    h1, p {
+        text-align: center;
+        letter-spacing: 0;
+        vertical-align: middle;
+        margin: 0;
+        animation: expand-content 0.8s ease-out 0.1s forwards;
+    }
+}
+
+@keyframes expand-horizontal {
+    to {
+        background-size: 100% 1px, 100% 1px;
+    }
+}
+
+@keyframes expand-content {
+    to {
+        letter-spacing: 0.2em;
+    }
+}
+
+header {
+    margin-top: 3.5rem;
+}
+
+header > * {
+    position: relative;
+    margin-top: 3.5rem;
+}
+
+header > *::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(-3.5rem - 1px);
+    left: calc(50% - 1px);
+    width: 1px;
+    height: calc(3.5rem + 1px);
+    background: white;
+}
+
+header > :first-child {
+    margin-top: 0;
+}
+
+header > :first-child::before {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header > * {
+        margin-top: 2rem;
+    }
+
+    header > *::before {
+        top: calc(-2rem - 1px);
+        height: calc(2rem + 1px);
+    }
+}
+
+header > nav > ul {
+    @include lists.horizontal-list;
+
+    display: flex;
+    flex-flow: row;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: x-large;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 3.5rem;
+
+    @media (max-width: 768px) {
+        flex-flow: column;
+        width: 70%;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: large;
+    }
+
+    > li {
+        @include animations.background-fade-hover;
+        flex: 1;
+        margin-left: 0;
+        margin-right: 0;
+        border-left: 1px solid white;
+        overflow: hidden;
+        text-wrap: nowrap;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            border-left: none;
+            border-top: 1px solid white;
+        }
+
+        a {
+            display: block;
+            font-weight: 200;
+            min-height: 100%;
+            padding: 1.2em 0;
+
+            &:hover, &:active {
+                filter: none;
+            }
+        }
+    }
+
+    > li:first-child {
+        border-left: none;
+        a {
+            padding-left: 1em;
+        }
+
+        @media (max-width: 768px) {
+            border-top: none;
+        }
+    }
+
+    > li:last-child > a {
+        padding-right: 1em;
+    }
+}

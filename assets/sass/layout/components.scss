@@ -1,38 +1,19 @@
-@use "lists";
-
-button {
-    appearance: none;
-}
+@use "base/colors";
+@use "components/lists";
 
 a {
+    transition: filter 0.1s ease;
     text-decoration: none;
+    color: colors.$primary;
+    font-weight: 600;
 
     &:hover {
         filter: brightness(50%)
     }
 }
 
-menu {
-    @include lists.horizontal-list;
-}
-
-address ul {
-    @include lists.horizontal-list;
-}
-
 img {
     max-width: 100%;
-}
-
-.grid {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-
-    .grid-item {
-        max-width: 40vw;
-    }
 }
 
 body {
@@ -40,7 +21,11 @@ body {
 }
 
 footer {
-    margin-top: 3em;
+    margin-top: 6em;
+    p {
+        text-align: center;
+        margin: 0 auto;
+    }
 }
 
 p {

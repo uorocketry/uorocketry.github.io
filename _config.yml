@@ -1,7 +1,9 @@
 permalink: /:basename
 
+url: https://uorocketry.ca
+source: src/
+
 sass:
-  sass_dir: assets/sass
   style: compressed
 
 collections:
@@ -18,9 +20,6 @@ collections:
         - finance.md
 
 exclude:
-  - package.json
-  - styleling.config.mjs
-  - pnpm-lock.yaml
   - README.md
   - LICENSE.md
   - .jj/

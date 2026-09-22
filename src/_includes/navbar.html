@@ -1,0 +1,10 @@
+<header class="mx-auto max-w-3/4 sm:2/3 md:1/3">
+    <nav class="bg-charcoal rounded-b-md">
+        <menu class="flex flex-row items-center justify-around">
+            <li class="transition duration-300 hover:brightness-75 active:brightness-50"><a href="/"><img class="inline-10" src="/assets/Images/Logos/UOR_Icon_Polar_Grey.png" alt="The UORocketry Logo"></a></li>
+            {% for item in site.data.navbar.nav_items %}
+            <li class="text-polar-grey transition delay-75 duration-300 hover:brightness-75 active:brightness-50"><a href="{{item.link}}"><i class="fa-solid {{item.icon}}"></i><span class="hidden sm:inline">{{item.text}}</span></a></li>
+            {% endfor %}
+        </menu>
+    </nav>
+</header>

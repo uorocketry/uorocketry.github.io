@@ -11,7 +11,7 @@ associated_collection: projects
     Get a sneak-peek of the stuff we're currently working on!
 </p>
 {% assign current_projects = projects_by_date | where: "complete", false %}
-<div class="grid">
+<div class="text-center flex justify-center flex-row gap-10">
     {% for project in current_projects %}
         <figure class="grid-item">
             <a href="{{ project.url }}"><img src="{{ project.img }}" alt="{{ project.title }}"></a>

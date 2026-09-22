@@ -1,12 +1,97 @@
 ---
 ---
-@use "main";
-@use "base/animations";
-@use "components/lists";
-@use "components/buttons";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: Overpass, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+$primary: black;
+$bg: #f2f2f2;
+
+@mixin background-fade-hover($color: white, $duration: 0.3s, $timing-function: ease) {
+	transition: background-color $duration $timing-function;
+
+	&:hover {
+		background-color: rgba($color: $color, $alpha: 7.5%);
+	}
+
+	&:active {
+		background-color: rgba($color: $color, $alpha: 17.5%);
+	}
+}
+
+@mixin interactable($background-color: white) {
+    @include background-fade-hover;
+    background-color: rgba($color: $background-color, $alpha: 0%);
+}
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin horizontal-list {
+    @include reset-list;
+
+    margin: 1em auto;
+
+    li {
+        display: inline-block;
+        margin: auto 0.5em;
+    }
+}
+
+menu {
+    @include horizontal-list;
+}
+
+address ul {
+    @include horizontal-list;
+}
+
+button {
+    appearance: none;
+}
+
+
+body {
+    background-color: $bg;
+    color: $primary;
+}
+
+a {
+    transition: filter 0.1s ease;
+    text-decoration: none;
+    color: $primary;
+    font-weight: 600;
+
+    &:hover {
+        filter: brightness(50%)
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    text-align: center;
+    margin-top: 0;
+}
+
+footer {
+    margin-top: 6em;
+
+    p {
+        text-align: center;
+        margin: 0 auto;
+    }
+}
 
 li > a.link--logo {
-    @include buttons.interactable;
+    @include interactable;
 
     display: inline-block;
     text-align: center;
@@ -23,11 +108,12 @@ li > a.link--logo {
 
 body {
     background-size: cover, cover;
+    color: white;
     margin: 0;
     height: 100vh;
     background-repeat: repeat, no-repeat;
     background-image:
-        linear-gradient(rgba($color: black, $alpha: 0.2), rgba($color: black, $alpha: 0.2)),
+        linear-gradient(rgba($color: black, $alpha: 20%), rgba($color: black, $alpha: 20%)),
         url(/assets/Images/Projects/2020_OctSkiesCrew.jpg);
 }
 
@@ -119,7 +205,7 @@ header > :first-child::before {
 }
 
 header > nav > ul {
-    @include lists.horizontal-list;
+    @include horizontal-list;
 
     display: flex;
     flex-flow: row;
@@ -143,7 +229,7 @@ header > nav > ul {
     }
 
     > li {
-        @include animations.background-fade-hover;
+        @include background-fade-hover;
         flex: 1;
         margin-left: 0;
         margin-right: 0;
@@ -159,6 +245,7 @@ header > nav > ul {
 
         a {
             display: block;
+            color: white;
             font-weight: 200;
             min-height: 100%;
             padding: 1.2em 0;

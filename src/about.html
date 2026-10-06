@@ -1,0 +1,182 @@
+---
+title: About Us
+layout: default
+
+captain_launch: Victoria Doré
+captain_engine: Anson Moorey
+chief_launch: Éloïse Plante Sabourin
+chief_engine: Zakariae Boulayad
+safety_launch: Randina Amarakoon
+safety_engine: Nicholas Kuzyshyn
+lead_airframe: Dina Jamani
+lead_avionics: John Szewczyk
+lead_beamforming: Elias Tarabey
+lead_finance: Isaac Chan
+---
+
+<h1>About Us</h1>
+<img src="" alt="Poster for uORocketry's 10th anniversary">
+<p>
+    uORocketry, the University of Ottawa Rocketry Team, develops rockets!
+    Since our inception in 2016, the team has developed and tested a hybrid rocket engine, a novel parachute concept, custom avionics systems, unique ignition mechanisms, different control schemas for both engine thrust throttling and air-braking, a payload designed to observe the effects of high acceleration on the hemolysis of blood cells, and a custom simulation suite for the purposes of performance optimization.
+    While this list is not exhaustive, it exemplifies the ideologies of this team: to pursue interesting projects.
+</p>
+<menu>
+    <li><button command="show-modal" commandfor="competitions">Competitions</button></li>
+    <li><button command="show-modal" commandfor="leads">Meet the Leads</button></li>
+</menu>
+
+<dialog id="competitions" class="subpage">
+    <button command="close" commandfor="competitions" class="subpage__close"><i class="fa-solid fa-x"></i></button>
+    <article class="subpage__content">
+        <h2>Competitions</h2>
+        <section id="spaceport-america">
+            <h3>Spaceport America Cup (2018&ndash;2019)</h3>
+            <a href="http://"><img src="" alt="Spaceport America Logo"></a>
+            <p>
+                In 2018 and 2019, we competed at the Spaceport America Cup, an international student rocketry competition.
+            </p>
+            <a href=""><img src="" alt="Spaceport America 2018"></a>
+            <p>
+                In 2018, we participated with our first rocket, <a href="">Simple Latte</a>, which was installed with our prototype air brake.
+                Simple Latte failed to achieve controlled descent, resulting in a ballistic impact.
+                With the help of another team, we were able to recover the nose cone, which remained with the team as a test nose cone!
+            </p>
+            <a href=""><img src="" alt="Spaceport America 2019"></a>
+            <p>
+                In 2019, we were one of the few teams invited to give a technical presentation; we discussed our ongoing search for a clever air-braking scheme that allows for a precise final altitude during flights.
+                We successfully launched and recovered our competition rocket, Jackalope.
+                The team achieved 4th place out of 47 teams in the 10000ft altitude, commercial motor category for an overall ranking of 8th place out of 122 teams competing!
+                This put uORocketry in the top 10 on an international stage.
+            </p>
+        </section>
+        <section id="CAN-RGX">
+            <h3>CAN-RGX (2020&ndash;2021)</h3>
+            <a href="https://www.seds.ca/can-rgx/"><img src="" alt="CAN-RGX Logo"></a>
+            <p>
+                From 2020 to 2021, we participated in the Canadian reduced gravity experiment design challenge (CAN-RXG), Canada’s first microgravity research competition, in collaboration with the National Research Council (NRC) and the Canadian Space Agency (CSA).
+            </p>
+            <img src="" alt="RGX 2021">
+            <p>
+                For two years, we worked with McMaster University’s Brown Lab and studied how antibiotic resistance is affected at reduced gravity environments, ultimately winning top prize.
+            </p>
+        </section>
+        <section id="launch-canada">
+            <h3>Launch Canada Challenge (2022&ndash;Present)</h3>
+            <a href="https://www.launchcanada.org/"><img src="" alt="Launch Canada Logo"></a>
+            <p>
+                Since 2022, we have competed at Launch Canada, Canada's premier rocketry challenge.
+            </p>
+            <img src="" alt="Our team at Launch Canada 2022">
+            <p>
+                At LC22, we attempted to hot fire our third hybrid engine, <a href="">Inkpod</a>.
+                For technical reasons, we were unable to hot fire.
+                Regardless, we were able to switch to a cold flow demonstration in Cochrane with successful results!
+            </p>
+            <img src="" alt="Our team at LC 2023">
+            <p>
+                In 2023, we launched <a href="">Gee-Force One</a>, our largest rocket so far, in Timmins.
+                Despite some challenges with parachute deployment, Gee-Force One was retrieved with minimal damage.
+            </p>
+            <img src="" alt="Our team at LC 2024">
+            <p>
+                We returned to Timmins in 2024 with our minimum diameter rocket – <a href="">Apogee-Gee</a>, aiming for the altitude record of an O-class motor.
+                Unable to reach the record due to thermal damage to the exterior, Apogee-Gee’s story was not over!
+                In 2025, Apogee-Gee soared through the skies once more, now with our SRAD Phoenix flight computer. Unfortunately, it suffered a rapid unscheduled disassembly in flight.
+            </p>
+            <img src="" alt="Our team at LC 2025">
+            <p>
+                At the 2025 Launch Canada Challenge, we also performed a technology development presentation on <a href="">October Skies</a>, a small-scale instrumented rocket installed with our sensor suite.
+                Despite not being able to launch, as well as the less-than-ideal performance of Apogee-gee, we placed 6th out of 17 for our basic category rocket launch, and 3rd place in the technology development category with our sensor suite.
+                This is a major milestone for the team with our first podium position at Launch Canada!
+            </p>
+
+                <p>
+                    At the 2026 Launch Canada Challenge, we competed with yet another minimal diameter rocket, <a href="">Perigee-Gee</a>.
+                    Much slimmer and much shorter, we aimed to break the M-class motor altitude record. [TBC]
+                </p>
+
+                <p>
+                    Ultimately, uORocketry is a multidisciplinary student engineering team that builds rockets, builds rocket infrastructure, and incidentally advances technologies through the meticulous combination of engineering practice and the audacity of your average rocket scientist.
+                </p>
+        </section>
+    </article>
+</dialog>
+
+<dialog id="leads" class="subpage">
+    <button command="close" commandfor="leads" class="subpage__close"><i class="fa-solid fa-x"></i></button>
+    <article class="subpage__content">
+        <div class="grid">
+            <figure class="grid__item grid__item--important">
+                <img src="" alt="Portrait of {{ page.captain_launch }}">
+                <figcaption>
+                    <p><b>{{ page.captain_launch }}</b></p>
+                    <p>Co-Captain (Launch)/Recovery Lead</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item grid__item--important">
+                <img src="" alt="Portrait of {{ page.captain_engine }}">
+                <figcaption>
+                    <p><b>{{ page.captain_engine }}</b></p>
+                    <p>Co-Captain (Engine)</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.chief_launch }}">
+                <figcaption>
+                    <p><b>{{ page.chief_launch }}</b></p>
+                    <p>Chief Engineer (Launch)</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.lead_airframe }}">
+                <figcaption>
+                    <p><b>{{ page.lead_airframe }}</b></p>
+                    <p>Airframe Lead</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.chief_engine }}">
+                <figcaption>
+                    <p><b>{{ page.chief_engine }}</b></p>
+                    <p>Chief Engineer (Engine)</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.safety_engine }}">
+                <figcaption>
+                    <p><b>{{ page.safety_engine }}</b></p>
+                    <p>Safety Officer (Engine)</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.lead_finance }}">
+                <figcaption>
+                    <p><b>{{ page.lead_finance }}</b></p>
+                    <p>Finance Lead</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.safety_launch }}">
+                <figcaption>
+                    <p><b>{{ page.safety_launch }}</b></p>
+                    <p>Safety Officer (Launch)</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.lead_avionics }}">
+                <figcaption>
+                    <p><b>{{ page.lead_avionics }}</b></p>
+                    <p>Avionics Lead</p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img src="" alt="Portrait of {{ page.lead_beamforming }}">
+                <figcaption>
+                    <p><b>{{ page.lead_beamforming }}</b></p>
+                    <p>Beamforming Lead</p>
+                </figcaption>
+            </figure>
+        </div>
+    </article>
+</dialog>

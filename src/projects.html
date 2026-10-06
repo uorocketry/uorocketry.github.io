@@ -1,0 +1,37 @@
+---
+title: Projects
+layout: default
+associated_collection: projects
+---
+
+{% assign projects_by_date = site[page.associated_collection] | sort: "year" | reverse %}
+
+<h2>Current Projects</h2>
+<p>
+    Get a sneak-peek of the stuff we're currently working on!
+</p>
+{% assign current_projects = projects_by_date | where: "complete", false %}
+<div class="text-center flex justify-center flex-row gap-10">
+    {% for project in current_projects %}
+        <figure class="grid-item">
+            <a href="{{ project.url }}"><img src="{{ project.img }}" alt="{{ project.title }}"></a>
+            <figcaption>{{ project.title }} ({{ project.year }})</figcaption>
+        </figure>
+    {% endfor %}
+</div>
+
+<h2>Past Projects</h1>
+<p>
+    Some of our past work and achievements!
+    Click on the images for more details about each project's story and specs.
+</p>
+
+{% assign past_projects = projects_by_date | where: "complete", true%}
+<div class="grid">
+    {% for project in past_projects %}
+        <figure class="grid-item">
+            <a href="{{ project.url }}"><img src="{{ project.img }}" alt="{{ project.title }}"></a>
+            <figcaption>{{ project.title }} ({{ project.year }})</figcaption>
+        </figure>
+    {% endfor %}
+</div>

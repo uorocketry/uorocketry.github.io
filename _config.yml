@@ -1,0 +1,25 @@
+permalink: /:basename
+
+url: https://uorocketry.ca
+source: src/
+
+sass:
+  style: compressed
+
+collections:
+  projects:
+      output: true
+  subteams:
+      output: true
+      order:
+        - airframe.md
+        - propulsion.md
+        - avionics.md
+        - recovery.md
+        - beamforming.md
+        - finance.md
+
+exclude:
+  - README.md
+  - LICENSE.md
+  - .jj/

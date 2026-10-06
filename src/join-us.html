@@ -1,0 +1,52 @@
+---
+title: Join Us!
+layout: default
+associated_collection: subteams
+---
+
+<h1>Join Us</h1>
+<p>
+    Do you want to be a member of the uORocketry team?
+    If yes, you are at the right place!
+    The uORocketry team is actively recruiting people to work on our exciting projects.
+    Before completing the form to join us, we highly encourage you to read the description of each sub-team to have a better idea of what we do and what you could work on.
+</p>
+
+<div class="interact interact--important">
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=sdof1BV-_Uy1-nIA5U3ra85kgIk8EaVPsyEHt_kmPfdURVhUU0Q4UDNTSVRSSDMwWEhUNVBUODdJRiQlQCN0PWcu"><button class="interact__button interact--important">
+        <i class="fa-solid fa-user-plus"></i> Join Us!
+    </button></a>
+</div>
+
+<div class="grid">
+    {% for subteam in site.subteams %}
+    <a href="{{ subteam.url }}" class="grid__item"><img src="{{ subteam.logo }}" alt="{{ subteam.title }} logo"></a>
+    {% endfor %}
+</div>
+
+<p>
+    In addition to the six sub-teams, uORocketry has three sub-teams that are currently dormant: payload, flight dynamics and antenna tracker.
+</p>
+
+<p>
+    <b>Payload</b> has made its mark during the pre-COVID era, where we had developed a blood centrifuge experiment and an E. coli experiment.
+    The former was incorporated in <a href="/projects/jackalope">Jackalope</a>, though was not permitted to fly due to its nature as a mammal-derived payload.
+    The E. coli experiment began as a joint project with the Faculty of Biology and as part of the scrapped Rocktopus and later repurposed as our entry to <a href="/projects/inkpod">CAN-RGX</a>.
+    If you have an idea, we are always excited to bring back Payload!
+</p>
+
+<p>
+    <b>Flight Dynamics</b> has been folded into <a href="/subteams/airframe">Airframe</a>.
+</p>
+
+<p>
+    <b>Antenna Tracker</b> is temporarily put on hold for LC26 and LC27, as most of the team’s personnel went into developing the liquid engine rocket, a new avionics architecture and the <a href="/subteams/beamforming">Beamforming</a> project.
+    However, we hope to one day continue development on our antenna tracker.
+    The infrastructure is already here, we’re just looking for someone to perfect it!
+    For now, Antenna Tracker has been folded into Airframe.
+</p>
+
+<div class="grid">
+    <img src="" alt="Payload team" class="grid__item">
+    <img src="" alt="Antenna Tracker team" class="grid__item">
+</div>

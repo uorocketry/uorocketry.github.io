@@ -1,0 +1,33 @@
+---
+title: Sitemap
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UORocketry Sitemap</title>
+</head>
+<body>
+    <ul>
+        {% assign pages = site.pages %}
+
+        {% for doc in pages %}
+        <li>
+            <a href="{{ doc.url | absolute_url }}">{{ doc.title }}</a>
+            {% if doc.associated_collection %}
+            <ul>
+                {% for item in site[doc.associated_collection] %}
+                <li><a href="{{ item.url }}">{{item.title}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %} <!-- collections contains name -->
+        </li>
+        {% endfor %} <!-- page in pages -->
+    </ul>
+
+    <footer>
+        <p>&copy; {{ site.time | date: "%Y" }} uORocketry</p>
+    </footer>
+</body>
+</html>

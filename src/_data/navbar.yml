@@ -1,0 +1,13 @@
+nav_items:
+    - icon: fa-info
+      link: /about
+      text: About
+    - icon: fa-rocket
+      link: /projects
+      text: Projects
+    - icon: fa-user-plus
+      link: /join-us
+      text: Join Us
+    - icon: fa-heart
+      link: /sponsors
+      text: Sponsors
